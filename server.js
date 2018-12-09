@@ -3,11 +3,14 @@ const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt-nodejs');
 const cors = require('cors');
 const knex = require('knex')
+const dotenv = require('dotenv');
 
 const register = require ('./Controllers/register');
 const signin =require('./Controllers/signin');
 const profile =require('./Controllers/profile');
 const image = require( './Controllers/image');
+
+dotenv.config();
 
 const db = knex({
   client: 'pg',
@@ -21,12 +24,6 @@ const app = express();
 
 app.use(cors())
 app.use(bodyParser.json());
-app.use(function(req,res,next){
-	res.header('Access-Control-Allow-Origin', '*');
-	res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-	res.header('Access-Control-Allow-Headers', 'Content-Type');
-	next();
-})
 
 app.get('/', (req, res)=> {
   res.send('it is working');

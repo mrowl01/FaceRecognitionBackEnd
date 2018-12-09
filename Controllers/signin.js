@@ -1,7 +1,4 @@
 const handleSignIn= (req, res,db,bcrypt) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-  res.header('Access-Control-Allow-Headers', 'Content-Type');
   const{email,password}= req.body;
   if (!email||!password){
     return res.status(400).json('Information not entered correctly')
